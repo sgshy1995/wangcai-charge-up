@@ -1,8 +1,7 @@
 <template>
-    <div class="nav-wrapper">
-        <div class="content">Money</div>
-        <Nav></Nav>
-    </div>
+    <Layout>
+        <p>Money</p>
+    </Layout>
 </template>
 
 <script lang="ts">
