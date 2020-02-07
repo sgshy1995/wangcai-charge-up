@@ -1,14 +1,14 @@
 <template>
     <nav>
-        <router-link to="/Money" class="item">
+        <router-link to="/Money" class="item" active-class="selected">
             <Icon name="money"></Icon>
             记 账
         </router-link>
-        <router-link to="/labels" class="item">
+        <router-link to="/labels" class="item" active-class="selected">
             <Icon name="labels"></Icon>
             标 签
         </router-link>
-        <router-link to="/statistics" class="item">
+        <router-link to="/statistics" class="item" active-class="selected">
             <Icon name="statistics"></Icon>
             统 计
         </router-link>
@@ -33,6 +33,7 @@
         justify-content: space-around;
         box-shadow: 0 0 3px rgba(0,0,0,0.25);
         font-size: 14px;
+        color: #aaaaaa;
         .item{
             width: 33.3333333%;
             display: flex;
@@ -40,6 +41,13 @@
             align-items: center;
             flex-direction: column;
             padding-top: .3em;
+            border: 1px solid #eee;
+            border-bottom: none;
+            border-top: none;
+            &.selected{
+                color: darkslategrey;
+                background: #eee;
+            }
         }
     }
 </style>
