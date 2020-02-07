@@ -27,26 +27,32 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "~@/assets/styles/global.scss";
     nav{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        box-shadow: 0 0 3px rgba(0,0,0,0.25);
+        box-shadow: $box-shadow;
         font-size: 14px;
-        color: #aaaaaa;
+        color: $color-nav;
         .item{
             width: 33.3333333%;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            padding-top: .3em;
-            border: 1px solid #eee;
+            padding-top: .8em;
+            padding-bottom: .5em;
+            border: 1px solid $color-border-nav;
             border-bottom: none;
             border-top: none;
+            background: $background-nav;
             &.selected{
-                color: darkslategrey;
-                background: #eee;
+                color: $color-nav-focus;
+                background: $background-nav-focus;
+            }
+            svg{
+                margin-bottom: .4em;
             }
         }
     }

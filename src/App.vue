@@ -4,16 +4,18 @@
   </div>
 </template>
 
+<script lang="ts">
+
+</script>
+
 <style lang="scss">
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
-    color: inherit;
-  }
+  @import "~@/assets/styles/reset.scss";
+  @import "~@/assets/styles/global.scss";
   body{
-    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: $font-hei;
+    color: $color;
+    line-height: $line-height;
   }
 </style>
