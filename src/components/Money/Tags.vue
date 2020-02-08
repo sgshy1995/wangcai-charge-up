@@ -1,12 +1,13 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button>新增标签</button>
+      <button @click="addTags">新增标签</button>
     </div>
     <ul class="current">
       <li :class="{'selected':selectedTags.indexOf(tag)>=0}" v-for="tag in dataResource" :key="tag"
           @click="toggle(tag)">
-        {{tag}}</li>
+        {{tag}}
+      </li>
     </ul>
   </div>
 </template>
@@ -14,16 +15,31 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component, Prop} from 'vue-property-decorator';
+
   @Component
-  export default class Tags extends Vue{
-    @Prop(Array) dataResource:string[] | undefined;
-    selectedTags:string[] = [];
-    toggle(tag:string){
+  export default class Tags extends Vue {
+    @Prop(Array) readonly dataResource: string[] | undefined;
+    selectedTags: string[] = [];
+
+    toggle(tag: string) {
       const index = this.selectedTags.indexOf(tag);
-      if(index>=0){
-        this.selectedTags.splice(index,1);
-      }else{
+      if (index >= 0) {
+        this.selectedTags.splice(index, 1);
+      } else {
         this.selectedTags.push(tag);
+      }
+    }
+
+    addTags() {
+      const name = window.prompt('请输入标签名：');
+      if (name === '') {
+        window.alert('标签名不可为空！');
+      } else if (this.dataResource) {
+        if (this.dataResource.indexOf(name!) >= 0) {
+          window.alert('标签名已存在！');
+        } else {
+          this.$emit('update:dataResource', [...this.dataResource, name]);
+        }
       }
     }
   }
@@ -40,6 +56,7 @@
     .current {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
 
       li {
         $h: 1.5em;
@@ -51,8 +68,9 @@
         margin-right: 1em;
         margin-top: .2em;
         border-radius: $h/2;
-        &.selected{
-          background: darken($bg,30%);
+
+        &.selected {
+          background: darken($bg, 30%);
           color: #ffffff;
         }
       }
