@@ -1,33 +1,73 @@
 <template>
   <div class="number-pad">
-    <div class="output">100</div>
+    <div class="output">{{output}}</div>
     <div class="keys">
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>删除</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>清除</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button class="ok">确认</button>
-      <button class="zero">0</button>
-      <button>.</button>
+      <button @click="changeOutput">1</button>
+      <button @click="changeOutput">2</button>
+      <button @click="changeOutput">3</button>
+      <button @click="deleteOutput">删除</button>
+      <button @click="changeOutput">4</button>
+      <button @click="changeOutput">5</button>
+      <button @click="changeOutput">6</button>
+      <button @click="clearOutput">清除</button>
+      <button @click="changeOutput">7</button>
+      <button @click="changeOutput">8</button>
+      <button @click="changeOutput">9</button>
+      <button @click="commitOutput" class="ok">确认</button>
+      <button @click="changeOutput" class="zero">0</button>
+      <button @click="changeOutput">.</button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  export default {
-    name: "NumberPad"
+  import Vue from 'vue';
+  import {Component} from 'vue-property-decorator';
+
+  @Component
+  export default class NumberPad extends Vue {
+    output: string = '0';
+
+    changeOutput(event: MouseEvent) {
+      const input = (event.target as HTMLButtonElement).textContent as string;
+      if (this.output.length === 16) {
+        return;
+      }
+      if (this.output === '0') {
+        if ('0123456789'.indexOf(input) >= 0) {
+          this.output = input;
+        } else {
+          this.output += input;
+        }
+        return;
+      }
+      if (this.output.indexOf('.') >= 0 && input === '.') {
+        return;
+      }
+      this.output += input;
+    }
+
+    clearOutput() {
+      this.output = '0';
+    }
+
+    deleteOutput() {
+      if (this.output.length === 1) {
+        this.output = '0';
+      } else {
+        this.output = this.output.slice(0, -1);
+      }
+    }
+
+    commitOutput(){
+      return;
+    }
   }
 </script>
 
 <style scoped lang="scss">
   @import "~@/assets/styles/global.scss";
+
   .number-pad {
     .output {
       font-size: 36px;
@@ -44,6 +84,7 @@
         float: left;
         width: 25%;
         height: 64px;
+
 
         &.ok {
           height: 128px;
@@ -83,6 +124,11 @@
         &:nth-child(12) {
           background: darken($bg, 30%);
         }
+
+        &:active{
+          box-shadow: inset 0 0 5px 0 fade_out(black,0.5);
+        }
+
       }
     }
   }
