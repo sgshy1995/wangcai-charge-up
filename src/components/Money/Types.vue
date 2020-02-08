@@ -10,16 +10,17 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import {Component} from "vue-property-decorator";
+  import {Component, Prop} from "vue-property-decorator";
 
   @Component
   export default class Types extends Vue {
     selectedType = '-'; // - 为支出 + 为收入
+    @Prop(Number) myNumber: number | undefined;
     changeType(type: string) {
       if (type === '-' || type === '+') {
-        this.selectedType = type
+        this.selectedType = type;
       } else {
-        throw new Error('Unknown Type')
+        throw new Error('Unknown Type');
       }
     }
   }

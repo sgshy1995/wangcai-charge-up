@@ -1,7 +1,7 @@
 <template>
   <Layout prefix-class="money">
     <NumberPad></NumberPad>
-    <Types></Types>
+    <Types :my-number="123"></Types>
     <Notes></Notes>
     <Tags></Tags>
   </Layout>
