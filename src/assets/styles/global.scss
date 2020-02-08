@@ -13,4 +13,16 @@ $background-nav-focus:linear-gradient(to bottom, #eeeeee 0%,#dddddd 50%,#eeeeee 
 
 $line-height: 1.5;
 
-$box-shadow:0 0 3px rgba(0,0,0,0.25);
+$font-size:16px;
+
+$box-shadow-outer:0 0 3px 0 fade_out(black,0.7);
+$box-shadow-inner:inset 0 5px 5px -5px fade_out(black,0.7),inset 0 -5px 5px -5px fade_out(black,0.7);
+
+// placeholder
+%clear-fix{
+  &::after{
+    content: '';
+    clear: both;
+    display: block;
+  }
+};

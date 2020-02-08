@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-
+export default {}
 </script>
 
 <style lang="scss">
@@ -16,6 +16,7 @@
     -moz-osx-font-smoothing: grayscale;
     font-family: $font-hei;
     color: $color;
+    font-size: $font-size;
     line-height: $line-height;
   }
 </style>

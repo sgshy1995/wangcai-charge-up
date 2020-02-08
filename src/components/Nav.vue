@@ -32,7 +32,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        box-shadow: $box-shadow;
+        box-shadow: $box-shadow-outer;
         font-size: 14px;
         color: $color-nav;
         .item{

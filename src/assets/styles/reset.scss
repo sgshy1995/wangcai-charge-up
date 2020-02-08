@@ -1,8 +1,18 @@
-*{
+*,*::before,*::after{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  list-style: none;
   color: inherit;
+}
+*:focus{
+  outline: none;
+}
+ol,ul,li{
+  list-style: none;
+}
+button,input{
+  font-family: inherit;
+  border: none;
+  background: transparent;
 }
