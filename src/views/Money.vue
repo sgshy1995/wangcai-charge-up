@@ -1,9 +1,9 @@
 <template>
   <Layout prefix-class="money">
-    <NumberPad @update:value="onUpdateAmount"></NumberPad>
-    <Types @update:value="onUpdateType"></Types>
-    <Notes @update:value="onUpdateNotes"></Notes>
-    <Tags :data-resource.sync="tags" @update:selected="onUpdateTags"></Tags>
+    <NumberPad :value.sync="record.amount"></NumberPad>
+    <Types :value.sync="record.type"></Types>
+    <Notes :value.sync="record.notes"></Notes>
+    <Tags :data-resource.sync="tags" :value.sync="record.tags"></Tags>
   </Layout>
 </template>
 
@@ -33,22 +33,6 @@
       type: '-',
       amount: 0
     };
-
-    onUpdateTags(value: string[]) {
-      this.record.tags = value;
-    }
-
-    onUpdateNotes(value: string) {
-      this.record.notes = value;
-    }
-
-    onUpdateType(value: string) {
-      this.record.type = value;
-    }
-
-    onUpdateAmount(value: string) {
-      this.record.amount = parseFloat(value);
-    }
   }
 </script>
 
