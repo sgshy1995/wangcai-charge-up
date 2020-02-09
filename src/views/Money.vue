@@ -15,7 +15,8 @@
   import Types from "@/components/Money/Types.vue";
   import Notes from "@/components/Money/Notes.vue";
   import Tags from "@/components/Money/Tags.vue";
-  import model from '@/models/recordListModel';
+  import recordListModel from '@/models/recordListModel';
+  import tagListModel from '@/models/tagListModel';
 
   {
     // 数据库相关 可忽略 只为演示
@@ -33,30 +34,33 @@
     window.localStorage.setItem('moneyVersion', '1.0.1');
   }
 
+  const recordList = recordListModel.fetch();
+  const tagList = tagListModel.fetch();
+
 
   @Component({
     components: {Tags, Notes, Types, NumberPad}
   })
   export default class Money extends Vue {
 
-    tags = ['网购', '吃饭', '充值', '生活缴费'];
+    tags = tagList;
     record: RecordItem = {
       tags: [],
       notes: '',
       type: '-',
       amount: 0
     };
-    recordList = model.fetch();
+    recordList:RecordItem[]=recordList;
 
     saveRecord() {
-      const deepCopyRecord: RecordItem = model.clone(this.record);
+      const deepCopyRecord: RecordItem = recordListModel.clone(this.record);
       deepCopyRecord.createTime = new Date();
       this.recordList.push(deepCopyRecord);
     }
 
     @Watch('recordList')
     onRecordListChanged() {
-      model.save(this.recordList);
+      recordListModel.save(this.recordList);
     }
   }
 </script>
