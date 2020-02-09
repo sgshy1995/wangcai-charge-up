@@ -18,5 +18,6 @@ export default {}
     color: $color;
     font-size: $font-size;
     line-height: $line-height;
+    background: #F6F6F6;
   }
 </style>
