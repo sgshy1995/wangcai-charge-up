@@ -68,6 +68,7 @@
         margin-right: 1em;
         margin-top: .2em;
         border-radius: $h/2;
+        cursor: pointer;
 
         &.selected {
           background: darken($bg, 30%);
