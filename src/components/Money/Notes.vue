@@ -28,7 +28,6 @@
 <style scoped lang="scss">
   .notes {
     padding-left: 16px;
-    background: #f5f5f5;
     font-size: 14px;
     display: flex;
     align-items: center;

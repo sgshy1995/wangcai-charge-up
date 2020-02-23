@@ -1,10 +1,15 @@
 <template>
   <Layout>
-    <div>
-      <Icon name="left"></Icon>
-      <span>编辑标签</span>
+    <div class="navBar">
+      <Icon class="leftIcon" name="left"></Icon>
+      <span class="title">编辑标签</span>
     </div>
-    <Notes field-name="标签名" placeholder="请输入标签名"/>
+    <div class="notesWrapper">
+      <Notes field-name="标签名" placeholder="请输入标签名"/>
+    </div>
+    <div class="buttonWrapper">
+      <Button>删除标签</Button>
+    </div>
   </Layout>
 </template>
 
@@ -13,8 +18,10 @@
   import {Component} from 'vue-property-decorator';
   import tagListModel from '@/models/tagListModel';
   import Notes from '@/components/Money/Notes.vue';
+  import Button from '@/components/Button.vue';
+
   @Component({
-    components: {Notes}
+    components: {Button, Notes}
   })
   export default class EditLabel extends Vue {
     created() {
@@ -32,5 +39,33 @@
 </script>
 
 <style scoped lang="scss">
+  .navBar {
+    text-align: center;
+    position: relative;
+    font-size: 16px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
 
+    .leftIcon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #eeeeee;
+      border-radius: 50%;
+    }
+  }
+
+  .notesWrapper {
+    background: white;
+    margin-top: 8px;
+  }
+  .buttonWrapper{
+    text-align: center;
+    padding-top: 44px;
+    cursor: pointer;
+  }
 </style>

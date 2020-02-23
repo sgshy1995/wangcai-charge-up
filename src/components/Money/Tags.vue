@@ -50,6 +50,7 @@
 <style scoped lang="scss">
   .tags {
     padding: 16px;
+    background: white;
     font-size: 14px;
     display: flex;
     flex-direction: column-reverse;

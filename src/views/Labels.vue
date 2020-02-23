@@ -7,7 +7,7 @@
       </router-link>
     </div>
     <div class="new-tag-wrapper">
-      <button class="new-tag" @click="createTag">新增标签</button>
+      <Button @click.native="createTag">新增标签</Button>
     </div>
   </Layout>
 </template>
@@ -16,10 +16,12 @@
   import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
   import tagListModel from '@/models/tagListModel';
+  import Button from '@/components/Button.vue';
 
   tagListModel.fetch();
-
-  @Component
+  @Component({
+    components: {Button}
+  })
   export default class Labels extends Vue {
     tags = tagListModel.data;
 
@@ -30,8 +32,8 @@
         if (message === 'duplicated') {
           window.alert('标签已存在！');
         }
-      }else {
-        window.alert('标签不可为空！')
+      } else {
+        window.alert('标签不可为空！');
       }
     }
   }
@@ -60,17 +62,10 @@
     }
   }
 
-  .new-tag {
-    font-size: 20px;
-    height: 42px;
-    background: #999;
-    color: #eee;
-    padding: 0 16px;
-    border-radius: 4px;
 
-    &-wrapper {
-      text-align: center;
-      margin-top: 48px;
-    }
+  .new-tag-wrapper {
+    text-align: center;
+    margin-top: 48px;
   }
+
 </style>
