@@ -1,8 +1,8 @@
 <template>
   <div>
     <label class="notes">
-      <span class="name">备注</span>
-      <input type="text" placeholder="在这里输入备注" v-model="content">
+      <span class="name">{{fieldName}}</span>
+      <input type="text" :placeholder="placeholder" v-model="content">
     </label>
   </div>
 </template>
@@ -14,6 +14,8 @@
   @Component
   export default class Notes extends Vue {
     @Prop({default:''}) readonly value!:string;
+    @Prop({required:true}) fieldName!:string;
+    @Prop() placeholder?:string;
     content:string = this.value;
 
     @Watch('content')
